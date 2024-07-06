@@ -1,4 +1,4 @@
-import ProductInfoCard from "../components/productInfoCard";
+import ProductInfoCard from "../components/ProductInfoCard";
 import Navbar from "../components/navbar";
 import CategoryBar from "../components/categoryBar";
 import { useNavigate } from "react-router-dom";
