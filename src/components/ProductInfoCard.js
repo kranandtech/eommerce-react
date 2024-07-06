@@ -1,4 +1,5 @@
 const ProductInfoCard = (props) => {
+    
   const { data = {} } = props;
   return (
       <div className="products-info-card">
