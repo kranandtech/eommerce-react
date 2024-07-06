@@ -8,29 +8,87 @@
   color: #fff;
   background-color: #131921;
   align-items: center;
-  gap: 12px;
-  padding: 10px;
+  gap: 20px;
+  padding: 10px 20px;
   display: flex;
 }
 
 .homepage-nav > h4 {
-  width: 76px;
+  width: 100px;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .homepage-nav > p {
-  width: 80px;
-  font-size: 12px;
+  text-align: left;
+  width: 120px;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .homepage-search-container {
-  background-color: red;
+  background-color: #fff;
+  border-radius: 4px;
   flex-grow: 1;
-  height: 30px;
+  align-items: center;
+  height: 40px;
   display: flex;
+  overflow: hidden;
+}
+
+.homepage-search-container select {
+  color: #333;
+  background-color: #f0f0f0;
+  border: none;
+  outline: none;
+  height: 100%;
+  padding: 0 10px;
+  font-size: 14px;
 }
 
 .homepage-search-container input {
+  border: none;
+  outline: none;
   flex-grow: 1;
+  height: 100%;
+  padding: 0 10px;
+  font-size: 16px;
+}
+
+.homepage-search-container button {
+  color: #fff;
+  cursor: pointer;
+  background-color: #f90;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0 15px;
+  font-size: 18px;
+  display: flex;
+}
+
+.homepage-search-container button:hover {
+  background-color: #e68a00;
+}
+
+.homepage-nav > h5 {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.homepage-nav > h5:hover {
+  text-decoration: underline;
+}
+
+.nav-icons {
+  gap: 16px;
+  margin-left: auto;
+  display: flex;
+}
+
+.nav-icons > div {
+  cursor: pointer;
 }
 
 .homepage-category-bar {

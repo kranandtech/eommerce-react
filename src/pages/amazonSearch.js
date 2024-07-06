@@ -20,7 +20,7 @@ const AmazonSearch = (props) => {
   },[searchText])
   return (
     <>
-      <Navbar  setSearchText={setSearchText} />
+      <Navbar  setSearchText={setSearchText} searchText={searchText} />
       <CategoryBar categories={categories} />
       
       <div className="products-container">

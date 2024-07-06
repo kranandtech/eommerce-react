@@ -1,30 +1,49 @@
-// searchText in navbar task
-
+import React from "react";
 import { IoSearchSharp } from "react-icons/io5";
-const Navbar = ({setSearchText,openSearchPage})=>{
- 
+import { useNavigate } from "react-router-dom";
+
+const Navbar = ({ setSearchText, openSearchPage, searchText }) => {
+  const navigate = useNavigate();
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      if(e.target.value!==""){
+        openSearchPage();
+      }
+    }
+  };
+
   const handleSearch = (e) => {
-    const val = e.target.value;
-    setSearchText(val);
-  }
-    return(
-        <nav className="homepage-nav">
-        <h4>Amazon.in</h4>
-        <p>
-          Address:
-          <br />
-          LPU University
-        </p>
-        <div className="homepage-search-container">
-          <select/>
-          <input type="text"  onChange={handleSearch}  />
-          <button onClick={openSearchPage}>
-            <IoSearchSharp />
-          </button>
-        </div>
-        <h5>Profile</h5>
-        <h5>Cart</h5>
-      </nav>
-    );
-}
+    setSearchText(e.target.value);
+  };
+  const handleLogoClick = () => {
+    navigate('/'); 
+  };
+  return (
+    <nav className="homepage-nav">
+      <h4 onClick={handleLogoClick} style={{ cursor: 'pointer' }}>Amazon.in</h4>
+      <p>
+        Address:
+        <br />
+        LPU University
+      </p>
+      <div className="homepage-search-container">
+        <input
+          type="text"
+          onKeyDown={handleKeyDown}
+          onChange={handleSearch}
+          value={searchText}
+         
+        />
+        <button onClick={openSearchPage}>
+          <IoSearchSharp />
+        </button>
+      </div>
+      <div className="nav-icons">
+        <div>Profile</div>
+        <div>Cart</div>
+      </div>
+    </nav>
+  );
+};
+
 export default Navbar;
