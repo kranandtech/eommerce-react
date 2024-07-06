@@ -20,7 +20,7 @@ const ProductInfo = ()=>{
                 <img src={product.thumbnail} alt={product.title} />
             </div>
             <div className="product-details">
-                <h2 className="product-title">{product.title}</h2><p className="product-brand">Brand:&nbsp;{product.brand}</p>
+                <h2 className="product-title">{product.title}</h2><p className="product-brand"></p>
                 <p className="product-description">{product.description}</p>
                 <h2 className="product-price">${product.price}</h2>
                 <button className="add-to-cart-button" >
