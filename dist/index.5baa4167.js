@@ -27727,9 +27727,7 @@ const Navbar = ({ setSearchText, openSearchPage, searchText })=>{
     _s();
     const navigate = (0, _reactRouterDom.useNavigate)();
     const handleKeyDown = (e)=>{
-        if (e.key === "Enter") {
-            if (e.target.value !== "") openSearchPage();
-        }
+        if (e.key === "Enter") e.target.value;
     };
     const handleSearch = (e)=>{
         setSearchText(e.target.value);
@@ -27842,7 +27840,7 @@ $RefreshReg$(_c, "Navbar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-icons/io5":"4BQSx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq","react-router-dom":"9xmpe"}],"4BQSx":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-icons/io5":"4BQSx","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"4BQSx":[function(require,module,exports) {
 // THIS FILE IS AUTO GENERATED
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -80707,23 +80705,25 @@ var _categoryBar = require("../components/categoryBar");
 var _categoryBarDefault = parcelHelpers.interopDefault(_categoryBar);
 var _react = require("react");
 var _reactRouterDom = require("react-router-dom");
+var _useGetProducts = require("../hooks/useGetProducts");
+var _useGetProductsDefault = parcelHelpers.interopDefault(_useGetProducts);
 var _s = $RefreshSig$();
 const AmazonSearch = (props)=>{
     _s();
+    console.log("Searchpage rendered");
     const { categories, searchText, setSearchText } = props;
-    const [products, setProducts] = (0, _react.useState)([]);
+    //  const [products, setProducts] = useState([]);
     const navigate = (0, _reactRouterDom.useNavigate)();
-    async function getData() {
-        const res = await fetch(`https://dummyjson.com/products/search?q=${searchText}`);
-        const data = await res.json();
-        setProducts(data.products);
-        console.log("api called");
-    }
-    (0, _react.useEffect)(()=>{
-        getData();
-    }, [
-        searchText
-    ]);
+    const products = (0, _useGetProductsDefault.default)(searchText);
+    // async function getData() {
+    //   const res = await fetch(`https://dummyjson.com/products/search?q=${searchText}`);
+    //   const data = await res.json();
+    //   setProducts(data.products);
+    //   console.log("api called");
+    // }
+    // useEffect(()=>{
+    //   getData();
+    // },[searchText])
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default), {
@@ -80731,14 +80731,14 @@ const AmazonSearch = (props)=>{
                 searchText: searchText
             }, void 0, false, {
                 fileName: "src/pages/amazonSearch.js",
-                lineNumber: 23,
+                lineNumber: 25,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _categoryBarDefault.default), {
                 categories: categories
             }, void 0, false, {
                 fileName: "src/pages/amazonSearch.js",
-                lineNumber: 24,
+                lineNumber: 26,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -80757,12 +80757,12 @@ const AmazonSearch = (props)=>{
                                     className: "product-image"
                                 }, void 0, false, {
                                     fileName: "src/pages/amazonSearch.js",
-                                    lineNumber: 32,
+                                    lineNumber: 34,
                                     columnNumber: 15
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/pages/amazonSearch.js",
-                                lineNumber: 31,
+                                lineNumber: 33,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -80773,7 +80773,7 @@ const AmazonSearch = (props)=>{
                                         children: elem.title
                                     }, void 0, false, {
                                         fileName: "src/pages/amazonSearch.js",
-                                        lineNumber: 35,
+                                        lineNumber: 37,
                                         columnNumber: 15
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -80784,7 +80784,7 @@ const AmazonSearch = (props)=>{
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/pages/amazonSearch.js",
-                                        lineNumber: 36,
+                                        lineNumber: 38,
                                         columnNumber: 15
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -80792,32 +80792,33 @@ const AmazonSearch = (props)=>{
                                         children: elem.description
                                     }, void 0, false, {
                                         fileName: "src/pages/amazonSearch.js",
-                                        lineNumber: 37,
+                                        lineNumber: 39,
                                         columnNumber: 15
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/pages/amazonSearch.js",
-                                lineNumber: 34,
+                                lineNumber: 36,
                                 columnNumber: 13
                             }, undefined)
                         ]
                     }, elem.id, true, {
                         fileName: "src/pages/amazonSearch.js",
-                        lineNumber: 28,
+                        lineNumber: 30,
                         columnNumber: 11
                     }, undefined))
             }, void 0, false, {
                 fileName: "src/pages/amazonSearch.js",
-                lineNumber: 26,
+                lineNumber: 28,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true);
 };
-_s(AmazonSearch, "IM33jVfoypN7Irf5pwXOwm+Oe18=", false, function() {
+_s(AmazonSearch, "LHqhH8vQYfUjoBIVvTJgHqgkz/Y=", false, function() {
     return [
-        (0, _reactRouterDom.useNavigate)
+        (0, _reactRouterDom.useNavigate),
+        (0, _useGetProductsDefault.default)
     ];
 });
 _c = AmazonSearch;
@@ -80830,7 +80831,43 @@ $RefreshReg$(_c, "AmazonSearch");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","../components/navbar":"dtZi7","../components/categoryBar":"gEUHS","react":"21dqq","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"hkvsT":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","../components/navbar":"dtZi7","../components/categoryBar":"gEUHS","react":"21dqq","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../hooks/useGetProducts":"juNDd"}],"juNDd":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$d293 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$d293.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _s = $RefreshSig$();
+const useGetProducts = (searchText)=>{
+    _s();
+    const [products, setProducts] = (0, _react.useState)([]);
+    console.log("useGetProducts rendered");
+    async function getData() {
+        const res = await fetch(`https://dummyjson.com/products/search?q=${searchText}`);
+        const data = await res.json();
+        setProducts(data.products);
+        console.log("api called");
+    }
+    (0, _react.useEffect)(()=>{
+        getData();
+    }, [
+        searchText
+    ]);
+    return products;
+};
+_s(useGetProducts, "f86L6rLANGURv6GE6gupp7+oOp4=");
+exports.default = useGetProducts;
+
+  $parcel$ReactRefreshHelpers$d293.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"hkvsT":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$2e2e = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -80887,12 +80924,8 @@ const ProductInfo = ()=>{
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                        className: "product-brand",
-                        children: [
-                            "Brand:\xa0",
-                            product.brand
-                        ]
-                    }, void 0, true, {
+                        className: "product-brand"
+                    }, void 0, false, {
                         fileName: "src/pages/productInfo.js",
                         lineNumber: 23,
                         columnNumber: 67

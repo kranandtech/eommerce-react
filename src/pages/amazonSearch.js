@@ -2,22 +2,24 @@ import Navbar from "../components/navbar";
 import CategoryBar from "../components/categoryBar";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useGetProducts from "../hooks/useGetProducts";
 
 const AmazonSearch = (props) => {
+  console.log("Searchpage rendered");
   const { categories,searchText,setSearchText } = props;
- const [products, setProducts] = useState([]);
+//  const [products, setProducts] = useState([]);
   const navigate = useNavigate(); 
- 
-  async function getData() {
-    const res = await fetch(`https://dummyjson.com/products/search?q=${searchText}`);
-    const data = await res.json();
-    setProducts(data.products);
-    console.log("api called");
-  }
+ const products = useGetProducts(searchText);
+  // async function getData() {
+  //   const res = await fetch(`https://dummyjson.com/products/search?q=${searchText}`);
+  //   const data = await res.json();
+  //   setProducts(data.products);
+  //   console.log("api called");
+  // }
 
-  useEffect(()=>{
-    getData();
-  },[searchText])
+  // useEffect(()=>{
+  //   getData();
+  // },[searchText])
   return (
     <>
       <Navbar  setSearchText={setSearchText} searchText={searchText} />

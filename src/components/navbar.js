@@ -7,7 +7,7 @@ const Navbar = ({ setSearchText, openSearchPage, searchText }) => {
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       if(e.target.value!==""){
-        openSearchPage();
+       // openSearchPage();
       }
     }
   };
