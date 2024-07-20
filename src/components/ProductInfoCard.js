@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import defaultImage from "../assets/default-image.jpg"; // Import default image
 import img11 from "../assets/img11.jpeg"; // Import specific image for product ID 11
-import "./ProductInfoCard.css"; // Import CSS for ProductInfoCard styling
+import "./productInfoCard.css"; // Import CSS for ProductInfoCard styling
 
 const ProductInfoCard = ({ data, handleImageError }) => {
   const productId = data.id;
