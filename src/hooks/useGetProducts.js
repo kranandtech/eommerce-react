@@ -10,7 +10,7 @@ const useGetProducts = ({ isSearchTextDependent = true }) => {
         `https://dummyjson.com/products/search?q=${stx}`
       );
       const data = await res.json();
-      setProducts(data);
+      setProducts(data.products);
     } catch (error) {
       console.log(error.message);
     }

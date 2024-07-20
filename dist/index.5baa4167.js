@@ -80935,7 +80935,7 @@ const useGetProducts = ({ isSearchTextDependent = true })=>{
         try {
             const res = await fetch(`https://dummyjson.com/products/search?q=${stx}`);
             const data = await res.json();
-            setProducts(data);
+            setProducts(data.products);
         } catch (error) {
             console.log(error.message);
         }
