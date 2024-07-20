@@ -1,34 +1,31 @@
-import { useEffect, useState } from "react";
+import React from "react";
+import { useParams } from "react-router-dom";
+import Navbar from "../components/navbar";
+import useGetProductById from "../hooks/useGetProductById";
+import "./productInfo.css"; // Import CSS for ProductInfo page styling
 
-const { useParams } = require("react-router-dom");
+const ProductInfo = ({ setSearchText }) => {
+  const params = useParams();
+  const productInfo = useGetProductById(params.id);
 
-const ProductInfo = ()=>{
-    const params = useParams();
-    const [product,setProduct] = useState([]);
-    
-    async function getData(){
-        const res = await fetch(`https://dummyjson.com/products/${params.id}`);
-        const data = await res.json();
-        setProduct(data);
-    }
-    useEffect(()=>{
-        getData();
-    },[params.id])
-    return(
-        <div className="product-container">
-            <div className="product-image">
-                <img src={product.thumbnail} alt={product.title} />
-            </div>
-            <div className="product-details">
-                <h2 className="product-title">{product.title}</h2><p className="product-brand"></p>
-                <p className="product-description">{product.description}</p>
-                <h2 className="product-price">${product.price}</h2>
-                <button className="add-to-cart-button" >
-                    Add to Cart
-                </button>
-            </div>
+  return (
+    <div>
+      <Navbar setSearchText={setSearchText} />
+      <div className="product-info-container">
+        <div className="product-images">
+          {productInfo?.images?.map((imgLink, index) => (
+            <img key={index} src={imgLink} alt={productInfo.title} className="product-image" />
+          ))}
         </div>
-    );
-}
+        <div className="product-details">
+          <h1 className="product-title">{productInfo.title}</h1>
+          <p className="product-description">{productInfo.description}</p>
+          <div className="product-price">${productInfo.price}</div>
+          <button className="add-to-cart-button">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default ProductInfo;

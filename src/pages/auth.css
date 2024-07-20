@@ -1,0 +1,72 @@
+/* Login.css */
+
+.login-container {
+    margin-top: 20px; /* Adjust margin as needed */
+}
+
+.auth-form {
+    background-color: #ffffff;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.auth-form h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-control.error {
+    border-color: #f44336; /* Red border for error */
+}
+
+.error-message {
+    color: #f44336; /* Red text for error message */
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.auth-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.auth-button:hover {
+    background-color: #45a049;
+}
+
+.auth-link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.auth-link a {
+    color: #4caf50;
+    text-decoration: none;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}

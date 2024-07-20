@@ -1,18 +1,28 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import AppContext from "../context/appContext";
 
-const useGetProducts = (searchText) => {
-    const [products, setProducts] = useState([]);
-console.log("useGetProducts rendered");
-    async function getData() {
-        const res = await fetch(`https://dummyjson.com/products/search?q=${searchText}`);
-        const data = await res.json();
-        setProducts(data.products);
-        console.log("api called");
-      }
-        useEffect(()=>{
-    getData();
-  },[searchText]);
-      return products;
+const useGetProducts = ({ isSearchTextDependent = true }) => {
+  const { searchText } = useContext(AppContext);
+  const [products, setProducts] = useState([]);
+  async function getData(stx) {
+    try {
+      const res = await fetch(
+        `https://api.escuelajs.co/api/v1/products/?title=${stx}`
+      );
+      const data = await res.json();
+      setProducts(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+  useEffect(() => {
+    if (isSearchTextDependent) {
+      getData(searchText);
+    } else {
+      getData("");
+    }
+  }, [searchText]);
+  return products;
 };
 
 export default useGetProducts;

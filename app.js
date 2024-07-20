@@ -1,144 +1,108 @@
-import ReactDOM from "react-dom/client";
-import "./globalStyles.css";
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import AppContext from "./src/context/appContext";
 import HomePage from "./src/pages/homePage";
 import AmazonSearch from "./src/pages/amazonSearch";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import { useState } from "react";
+import SignUp from "./src/pages/signUp";
+import Login from "./src/pages/signIn";
 import ProductInfo from "./src/pages/productInfo";
-const parent = document.getElementById("root");
+import Navbar from "./src/components/navbar";
+import Cart from "./src/pages/cart";
+import Profile from "./src/pages/profile";
 
+const parent = document.getElementById("root");
 const root = ReactDOM.createRoot(parent);
-const productInfoCards = [
-  {
-    id: 1,
-    title: "Revamp",
-    products: [
-      {
-        title: "Cushion",
-        img: "https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/New/1x/final/186x116_Home_furnishings_2._SY116_CB555624324_.jpg",
-      },
-      {
-        title: "Figurines",
-        img: "https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/New/1x/final/186x116_Home_decor_1._SY116_CB555624324_.jpg",
-      },
-      {
-        title: "Home Storage",
-        img: "https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/New/1x/final/186x116_Home_storage_1._SY116_CB555624324_.jpg",
-      },
-      {
-        title: "Lighting Solutions",
-        img: "https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/New/1x/final/186x116_Home_lighting_2._SY116_CB555624324_.jpg",
-      },
-      
-    ],
-  },
-  {
-    id: 1,
-    title: "Revamp",
-    products: [
-      {
-        title: "Cushion",
-        img: "https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/New/1x/final/186x116_Home_furnishings_2._SY116_CB555624324_.jpg",
-      },
-      {
-        title: "Figurines",
-        img: "https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/New/1x/final/186x116_Home_decor_1._SY116_CB555624324_.jpg",
-      },
-      {
-        title: "Home Storage",
-        img: "https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/New/1x/final/186x116_Home_storage_1._SY116_CB555624324_.jpg",
-      },
-      {
-        title: "Lighting Solutions",
-        img: "https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/New/1x/final/186x116_Home_lighting_2._SY116_CB555624324_.jpg",
-      },
-      
-    ],
-  },
-  {
-    id: 1,
-    title: "Revamp",
-    products: [
-      {
-        title: "Cushion",
-        img: "https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/New/1x/final/186x116_Home_furnishings_2._SY116_CB555624324_.jpg",
-      },
-      {
-        title: "Figurines",
-        img: "https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/New/1x/final/186x116_Home_decor_1._SY116_CB555624324_.jpg",
-      },
-      {
-        title: "Home Storage",
-        img: "https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/New/1x/final/186x116_Home_storage_1._SY116_CB555624324_.jpg",
-      },
-      {
-        title: "Lighting Solutions",
-        img: "https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/New/1x/final/186x116_Home_lighting_2._SY116_CB555624324_.jpg",
-      },
-      
-    ],
-  },
-  {
-    id: 1,
-    title: "Revamp",
-    products: [
-      {
-        title: "Cushion",
-        img: "https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/New/1x/final/186x116_Home_furnishings_2._SY116_CB555624324_.jpg",
-      },
-      {
-        title: "Figurines",
-        img: "https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/New/1x/final/186x116_Home_decor_1._SY116_CB555624324_.jpg",
-      },
-      {
-        title: "Home Storage",
-        img: "https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/New/1x/final/186x116_Home_storage_1._SY116_CB555624324_.jpg",
-      },
-      {
-        title: "Lighting Solutions",
-        img: "https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/New/1x/final/186x116_Home_lighting_2._SY116_CB555624324_.jpg",
-      },
-      
-    ],
-  },
-];
 
 const categories = [
-  "Fresh",
-  "Amazon MiniTV",
-  "Sell",
-  "Best Sellers",
-  "Mobiles",
-  "Today Deals",
-  "Prime",
-  "Fashion",
+  "Electronics",
+  "Clothes",
+  "Furniture",
+  "Shoes",
+  "Books",
+  "Miscellaneous",
 ];
-
-
 
 const App = () => {
   const [searchText, setSearchText] = useState("");
+  const [cart, setCart] = useState([]);
+  const [loggedInUser, setLoggedInUser] = useState(null);
+
   const router = createBrowserRouter([
     {
-      path:'/',
-      element:<HomePage searchText={searchText} setSearchText={setSearchText} productInfoCards={productInfoCards} categories={categories}/>
+      path: "/",
+      element: <HomePage />,
     },
     {
-      path:'/search',
-      element:<AmazonSearch searchText={searchText} setSearchText={setSearchText} categories={categories}/>
+      path: "/search",
+      element: <AmazonSearch />,
     },
     {
-      path:'/search/:id',
-      element:<ProductInfo/>
-    }
+      path: "/search/:id",
+      element: <ProductInfo />,
+    },
+    {
+      path: "/signup",
+      element: loggedInUser ? <HomePage /> : <SignUp />,
+    },
+    {
+      path: "/login",
+      element: loggedInUser ? <HomePage /> : <Login />,
+    },
+    {
+      path: "/cart",
+      element: loggedInUser ? <Cart /> : <Login />,
+    },
+    {
+      path: "/profile",
+      element: loggedInUser ? <Profile /> : <Login />,
+    },
   ]);
 
-  return(
-     <RouterProvider router={router}/>
+  const addToCart = (elem) => {
+    const isPresent = cart.findIndex((cI) => cI.id === elem.id);
+    if (isPresent === -1) {
+      const newCart = [...cart];
+      newCart.push({
+        title: elem.title,
+        id: elem.id,
+        price: elem.price,
+        images: elem.images[0],
+        count: 1,
+      });
+      setCart(newCart);
+    } else {
+      const newCart = cart.map((cartItem) =>
+        cartItem.id === elem.id
+          ? { ...cartItem, count: cartItem.count + 1 }
+          : cartItem
+      );
+      setCart(newCart);
+    }
+  };
+
+  const appLogin = (user) => {
+    setLoggedInUser(user);
+  };
+
+  const contextValues = {
+    loggedInUser,
+    cart, // Include cart state
+    setCart, // Include setCart function to update cart state
+    addToCart,
+    categories,
+    searchText,
+    setSearchText,
+    appLogin,
+  };
+
+  return (
+    <AppContext.Provider value={contextValues}>
+      <RouterProvider router={router} />
+    </AppContext.Provider>
   );
 };
 
 root.render(<App />);
+
+export default App;
