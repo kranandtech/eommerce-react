@@ -1,7 +1,7 @@
 const useSignUp = () => {
   const signUp = async ({ email, password,name }) => {
     console.log("signup called");
-    const URL = "http://localhost:9000/api/v1/auth/signup";
+    const URL = "https://ecomm-backend-266caf3bf048.herokuapp.com/api/v1/auth/signup";
     const OPTIONS = {
       method: "POST",
       headers:{

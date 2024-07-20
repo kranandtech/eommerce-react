@@ -6,7 +6,7 @@ const useLogin = () => {
     const login = async ({ email, password }) => {
         try {
             console.log("login called");
-      const URL = "http://localhost:9000/api/v1/auth/login";
+      const URL = "https://ecomm-backend-266caf3bf048.herokuapp.com/api/v1/auth/login";
       const OPTIONS = {
         method: "POST",
         headers:{
