@@ -34786,7 +34786,7 @@ var _defaultImageJpg = require("../assets/default-image.jpg"); // Import default
 var _defaultImageJpgDefault = parcelHelpers.interopDefault(_defaultImageJpg);
 var _img11Jpeg = require("../assets/img11.jpeg"); // Import specific image for product ID 11
 var _img11JpegDefault = parcelHelpers.interopDefault(_img11Jpeg);
-var _productInfoCardCss = require("./ProductInfoCard.css"); // Import CSS for ProductInfoCard styling
+var _productInfoCardCss = require("./productInfoCard.css"); // Import CSS for ProductInfoCard styling
 const ProductInfoCard = ({ data, handleImageError })=>{
     const productId = data.id;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -34860,7 +34860,7 @@ $RefreshReg$(_c, "ProductInfoCard");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","../assets/default-image.jpg":"pxlGh","../assets/img11.jpeg":"15rBo","./ProductInfoCard.css":"fpF5S","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"pxlGh":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","../assets/default-image.jpg":"pxlGh","../assets/img11.jpeg":"15rBo","./productInfoCard.css":"4kqIP","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"pxlGh":[function(require,module,exports) {
 module.exports = require("8a1810741cc33d7f").getBundleURL("1G2bZ") + "default-image.a5b089d8.jpg" + "?" + Date.now();
 
 },{"8a1810741cc33d7f":"lgJ39"}],"lgJ39":[function(require,module,exports) {
@@ -34901,7 +34901,7 @@ exports.getOrigin = getOrigin;
 },{}],"15rBo":[function(require,module,exports) {
 module.exports = require("e2e7428bd021ce9").getBundleURL("1G2bZ") + "img11.13b78417.jpeg" + "?" + Date.now();
 
-},{"e2e7428bd021ce9":"lgJ39"}],"fpF5S":[function() {},{}],"dtZi7":[function(require,module,exports) {
+},{"e2e7428bd021ce9":"lgJ39"}],"4kqIP":[function() {},{}],"dtZi7":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$af4a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -80933,7 +80933,7 @@ const useGetProducts = ({ isSearchTextDependent = true })=>{
     const [products, setProducts] = (0, _react.useState)([]);
     async function getData(stx) {
         try {
-            const res = await fetch(`https://api.escuelajs.co/api/v1/products/?title=${stx}`);
+            const res = await fetch(`https://dummyjson.com/products/search?q=${stx}`);
             const data = await res.json();
             setProducts(data);
         } catch (error) {
@@ -80948,7 +80948,7 @@ const useGetProducts = ({ isSearchTextDependent = true })=>{
     ]);
     return products;
 };
-_s(useGetProducts, "D2K4/6Uiu6jMPoiVU2XCeQp0f4c=");
+_s(useGetProducts, "lyKQdmuLjINnm9oK8n7tyjU1Suk=");
 exports.default = useGetProducts;
 
   $parcel$ReactRefreshHelpers$d293.postlude(module);
@@ -81765,7 +81765,7 @@ const useGetProductById = (id)=>{
     const getProductById = async ()=>{
         try {
             const res = await fetch(`
-            https://api.escuelajs.co/api/v1/products/${id}
+            https://dummyjson.com/products/${id}
             `);
             const data = await res.json();
             setProductInfo(data);
