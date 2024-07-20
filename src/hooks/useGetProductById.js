@@ -6,7 +6,7 @@ const useGetProductById = (id) => {
     const getProductById = async () => {
         try {
             const res = await fetch(`
-            https://api.escuelajs.co/api/v1/products/${id}
+            https://dummyjson.com/products/${id}
             `);
             const data = await res.json();
             setProductInfo(data);

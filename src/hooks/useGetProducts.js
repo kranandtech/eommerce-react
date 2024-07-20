@@ -7,7 +7,7 @@ const useGetProducts = ({ isSearchTextDependent = true }) => {
   async function getData(stx) {
     try {
       const res = await fetch(
-        `https://api.escuelajs.co/api/v1/products/?title=${stx}`
+        `https://dummyjson.com/products/search?q=${stx}`
       );
       const data = await res.json();
       setProducts(data);
